@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!-- <div class="main">
+      UserId: &nbsp; <span class="userid"></span><br>
+      Id: &nbsp; <span class="id"></span><br>
+      Title: &nbsp; <span class="title"></span><br>
+      Body: &nbsp; <span class="body"></span>
+  </div> -->
+  
+
+  <script>
+
+    // let p = new Promise((res, rej) => {
+    // let count = 10;
+
+    // if(count == 10){
+    //   console.log("resolve");
+    // }
+    // else{
+    //   console.log("rejected");
+    // }
+    // });
+
+    // p.then((data) => {console.log(data)})
+    // .then((error) => {console.log(error)})
+    
+    let userid = document.querySelector(".userid");
+    let id = document.querySelector(".id");
+    let title = document.querySelector(".title");
+    let body_s = document.querySelector(".body");
+
+
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then( (responce) => responce.json())
+    .then( (data) => {
+      // console.log(data);
+      
+      var obj = data.filter(function(i, index){
+            setdata(index) 
+            // return  i.id == index
+      })
+          
+          function setdata(i) {
+            console.log(i);
+            let object = data[i]
+            console.log(object);
+            document.body.innerHTML += `
+              Id: ${object.id} <br /> UserId: ${object.userId} <br /> Title: ${object.title} <br />
+              Body: ${object.body} <br /><br />
+            `
+          }
+      
+    })
+    
+   
+
+
+
+  </script>
+
+</body>
+</html>
